@@ -1,11 +1,12 @@
 import * as React from 'react';
 
 import Hello from '../containers/Hello';
+import Foo from '../containers/Foo';
 
 const HelloAsia = () => (
   <div className="hello-asia">
     <Hello />
-    <Hello />
+    <Foo />
     <Hello />
   </div>
 );
