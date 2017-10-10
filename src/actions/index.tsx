@@ -1,23 +1,6 @@
-import * as constants from '../constants';
+import { Actions as FooActions } from './foo';
+import { Actions as BarActions } from './bar';
 
-export interface IncrementEnthusiasm {
-    type: constants.INCREMENT_ENTHUSIASM;
-}
-
-export interface DecrementEnthusiasm {
-    type: constants.DECREMENT_ENTHUSIASM;
-}
-
-export type EnthusiasmAction = IncrementEnthusiasm | DecrementEnthusiasm;
-
-export function incrementEnthusiasm(): IncrementEnthusiasm {
-    return {
-        type: constants.INCREMENT_ENTHUSIASM
-    };
-}
-
-export function decrementEnthusiasm(): DecrementEnthusiasm {
-    return {
-        type: constants.DECREMENT_ENTHUSIASM
-    };
-}
+export type RootAction =
+  | FooActions[keyof FooActions]
+  | BarActions[keyof BarActions];

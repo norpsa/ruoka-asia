@@ -1,19 +1,23 @@
-import Hello from '../components/Hello';
-import * as actions from '../actions/';
-import { StoreState } from '../types/index';
+import Hello from '../components/Hello/Hello';
+import * as fooActions from '../actions/foo';
+import * as barActions from '../actions/bar';
+import { RootAction } from '../actions/index';
+import { RootState } from '../types/index';
 import { connect, Dispatch } from 'react-redux';
 
-export function mapStateToProps({ enthusiasmLevel, languageName }: StoreState) {
+export function mapStateToProps(state: RootState) {
   return {
-    enthusiasmLevel,
-    name: languageName,
+    fooEnthusiasmLevel: state.foo.enthusiasmLevel,
+    barEnthusiasmLevel: state.bar.enthusiasmLevel,
   };
 }
 
-export function mapDispatchToProps(dispatch: Dispatch<actions.EnthusiasmAction>) {
+export function mapDispatchToProps(dispatch: Dispatch<RootAction>) {
   return {
-    onIncrement: () => dispatch(actions.incrementEnthusiasm()),
-    onDecrement: () => dispatch(actions.decrementEnthusiasm()),
+    onFooIncrement: () => dispatch(fooActions.fooIncrementEnthusiasm()),
+    onFooDecrement: () => dispatch(fooActions.fooDecrementEnthusiasm()),
+    onBarIncrement: () => dispatch(barActions.barIncrementEnthusiasm()),
+    onBarDecrement: () => dispatch(barActions.barDecrementEnthusiasm()),
   };
 }
 
