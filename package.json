@@ -20,6 +20,8 @@
     "@types/node": "^8.0.33",
     "@types/react": "^16.0.10",
     "@types/react-dom": "^16.0.1",
-    "@types/react-redux": "^5.0.10"
+    "@types/react-redux": "^5.0.10",
+    "@types/redux-logger": "^3.0.4",
+    "redux-logger": "^3.0.6"
   }
 }

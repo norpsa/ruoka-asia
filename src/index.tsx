@@ -1,21 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import { createStore } from 'redux';
-import { rootReducer } from './reducers/index';
-import { RootState } from './types/index';
+import store from './store';
 
-import Hello from './containers/Hello';
+import HelloPage from './pages/HelloPage';
 import { Provider } from 'react-redux';
 
 import registerServiceWorker from './registerServiceWorker';
 import './index.css';
 
-const store = createStore<RootState>(rootReducer);
-
 ReactDOM.render(
   <Provider store={store}>
-    <Hello />
+    <HelloPage />
   </Provider>,
   document.getElementById('root') as HTMLElement
 );
