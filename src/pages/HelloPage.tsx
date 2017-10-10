@@ -1,12 +1,14 @@
 import * as React from 'react';
 
-import Hello from '../containers/Hello';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import HelloAsia from '../components/HelloAsia';
 
 const HelloPage = () => (
   <div className="hello">
-    <Hello />
-    <Hello />
-    <Hello />
+    <Header />
+    <HelloAsia />
+    <Footer />
   </div>
 );
 
