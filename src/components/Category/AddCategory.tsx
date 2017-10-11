@@ -2,7 +2,7 @@ import * as React from 'react';
 import { NewCategoryPayload } from '../../types/index';
 
 export interface Props {
-  addCategory: (payload: NewCategoryPayload) => void;
+  addCategory?: (payload: NewCategoryPayload) => void;
 }
 
 function AddCategory({
@@ -10,7 +10,9 @@ function AddCategory({
 }: Props) {
 
   function add() {
-    addCategory({name: 'asd', description: 'asd'});
+    if(addCategory) {
+      addCategory({name: 'asd', description: 'asd'});
+    }
   }
 
   return (

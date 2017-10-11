@@ -10,4 +10,4 @@ export function mapDispatchToProps(dispatch: Dispatch<RootAction>) {
   };
 }
 
-export default connect(mapDispatchToProps)(AddCategory);
+export default connect(undefined, mapDispatchToProps)(AddCategory);
