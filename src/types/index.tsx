@@ -8,7 +8,33 @@ export interface BarState {
   enthusiasmLevel: number;
 }
 
+export interface Recipe {
+  id: number;
+  name: string;
+  description: string;
+  categoryId: number;
+}
+
+export interface Category {
+  id: number;
+  name: string;
+  description: string;
+}
+
+export interface NewCategoryPayload {
+    name: string;
+    description: string;
+}
+
+export interface RecipeState {
+  categories: Category[];
+  recipes: Recipe[];
+  nextCategoryId: number;
+  nextRecipeId: number;
+}
+
 export interface RootState {
   foo: FooState;
   bar: BarState;
+  recipes: RecipeState;
 }

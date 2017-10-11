@@ -1,4 +1,3 @@
-
 import { Actions } from '../actions/foo';
 import { FooState } from '../types/index';
 import { FOO_INCREMENT_ENTHUSIASM, FOO_DECREMENT_ENTHUSIASM } from '../constants/index';
