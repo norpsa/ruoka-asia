@@ -1,23 +1,26 @@
 import * as React from 'react';
-import { NewCategoryPayload } from '../../types/index';
 
 export interface Props {
-  addCategory?: (payload: NewCategoryPayload) => void;
+  addCategory?: () => void;
+  categoryNameChanged: (event: React.FormEvent<HTMLInputElement>) => void;
+  categoryDescriptionChanged: (event: React.FormEvent<HTMLInputElement>) => void;
+  categoryName: string;
+  categoryDescription: string;
 }
 
 function AddCategory({
-  addCategory
+  addCategory,
+  categoryNameChanged,
+  categoryDescriptionChanged,
+  categoryName,
+  categoryDescription
 }: Props) {
-
-  function add() {
-    if(addCategory) {
-      addCategory({name: 'asd', description: 'asd'});
-    }
-  }
 
   return (
     <div className="hello">
-      <button onClick={add}>+</button>
+      <input type="text" value={categoryName} onChange={(event) => categoryNameChanged(event)} />
+      <input type="text" value={categoryDescription} onChange={(event) => categoryDescriptionChanged(event)} />
+      <button onClick={addCategory}>Lisää</button>
     </div>
   );
 }

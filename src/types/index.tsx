@@ -21,16 +21,13 @@ export interface Category {
   description: string;
 }
 
-export interface NewCategoryPayload {
-    name: string;
-    description: string;
-}
-
 export interface RecipeState {
   categories: Category[];
   recipes: Recipe[];
   nextCategoryId: number;
   nextRecipeId: number;
+  newCategoryName: string;
+  newCategoryDescription: string;
 }
 
 export interface RootState {
