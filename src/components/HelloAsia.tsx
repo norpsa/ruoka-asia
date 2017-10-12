@@ -1,15 +1,11 @@
 import * as React from 'react';
-
-import Hello from '../containers/Hello';
 import AddCategory from '../containers/Category/AddCategory';
-import Foo from '../containers/Foo';
+import ListCategories from '../containers/Category/ListCategories';
 
 const HelloAsia = () => (
   <div className="hello-asia">
+    <ListCategories />
     <AddCategory />
-    <Hello />
-    <Foo />
-    <Hello />
   </div>
 );
 
