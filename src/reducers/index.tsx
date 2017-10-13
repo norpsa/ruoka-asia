@@ -8,7 +8,7 @@ import { recipes } from './recipe';
 import { RootState } from '../types/index';
 
 export const rootReducer = combineReducers<RootState>({
-  router: routerReducer,
+  routing: routerReducer,
   foo,
   bar,
   recipes

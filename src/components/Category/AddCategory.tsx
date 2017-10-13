@@ -1,4 +1,6 @@
 import * as React from 'react';
+import { Button, Input } from 'antd';
+import './Category.css';
 
 export interface Props {
   addCategory?: () => void;
@@ -17,10 +19,13 @@ function AddCategory({
 }: Props) {
 
   return (
-    <div className="hello">
-      <input type="text" value={categoryName} onChange={(event) => categoryNameChanged(event)} />
-      <input type="text" value={categoryDescription} onChange={(event) => categoryDescriptionChanged(event)} />
-      <button onClick={addCategory}>Lisää</button>
+    <div className="add-category">
+      <Input type="text" value={categoryName} addonBefore="Nimi"
+        onChange={(event) => categoryNameChanged(event)} />
+      <Input type="text" value={categoryDescription} addonBefore="Kuvaus"
+        onChange={(event) => categoryDescriptionChanged(event)} />
+      <br /><br />
+      <Button onClick={addCategory}>Lisää</Button>
     </div>
   );
 }

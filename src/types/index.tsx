@@ -1,3 +1,5 @@
+import { RouterState } from 'react-router-redux';
+
 export interface FooState {
   languageName: string;
   enthusiasmLevel: number;
@@ -21,6 +23,10 @@ export interface Category {
   description: string;
 }
 
+export interface OwnProps {
+  id: number;
+}
+
 export interface RecipeState {
   categories: Category[];
   recipes: Recipe[];
@@ -34,4 +40,5 @@ export interface RootState {
   foo: FooState;
   bar: BarState;
   recipes: RecipeState;
+  routing: RouterState;
 }
