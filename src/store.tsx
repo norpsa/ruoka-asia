@@ -7,6 +7,7 @@ import { RootState } from './types/index';
 import { rootReducer } from './reducers/index';
 
 import history from './history';
+import { loadState, saveState } from './localStorage';
 
 function configureStore(initialState?: RootState) {
   // configure middlewares
@@ -18,16 +19,21 @@ function configureStore(initialState?: RootState) {
     middlewares.push(logger);
   }
 
+  const persistedState = loadState();
+
   // create store
   return createStore<RootState>(
     rootReducer,
-    initialState!,
+    persistedState,
     applyMiddleware(...middlewares)
   );
 }
 
 // pass an optional param to rehydrate state on app start
 const store = configureStore();
+store.subscribe(() => {
+  saveState(store.getState());
+});
 
 // export store singleton instance
 export default store;
