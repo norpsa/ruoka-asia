@@ -14,7 +14,9 @@ const initialState: RecipeState = {
   nextCategoryId: 0,
   nextRecipeId: 0,
   newCategoryName: '',
-  newCategoryDescription: ''
+  newCategoryDescription: '',
+  newRecipeName: '',
+  newRecipeUrl: ''
 };
 
 export function recipes(state: RecipeState = initialState, action: Actions): RecipeState {
