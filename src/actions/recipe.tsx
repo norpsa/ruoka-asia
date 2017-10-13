@@ -1,38 +1,78 @@
 import * as constants from '../constants';
 
 export interface RecipeAddCategory {
-    type: constants.RECIPE_ADD_CATEGORY;
+  type: constants.RECIPE_ADD_CATEGORY;
 }
 
 export interface RecipeChangeCategoryName {
-    type: constants.RECIPE_CHANGE_CATEGORY_NAME;
-    newName: string;
+  type: constants.RECIPE_CHANGE_CATEGORY_NAME;
+  newName: string;
 }
 
 export interface RecipeChangeCategoryDescription {
-    type: constants.RECIPE_CHANGE_CATEGORY_DESCRIPTION;
-    newDescription: string;
+  type: constants.RECIPE_CHANGE_CATEGORY_DESCRIPTION;
+  newDescription: string;
 }
 
-export type Actions = RecipeAddCategory | RecipeChangeCategoryName | RecipeChangeCategoryDescription;
+export interface RecipeAddRecipe {
+  type: constants.RECIPE_ADD_RECIPE;
+}
+
+export interface RecipeChangeRecipeName {
+  type: constants.RECIPE_CHANGE_RECIPE_NAME;
+  newName: string;
+}
+
+export interface RecipeChangeRecipeUrl {
+  type: constants.RECIPE_CHANGE_RECIPE_URL;
+  newUrl: string;
+}
+
+
+export type Actions = RecipeAddCategory
+  | RecipeChangeCategoryName
+  | RecipeChangeCategoryDescription
+  | RecipeAddRecipe
+  | RecipeChangeRecipeName
+  | RecipeChangeRecipeUrl;
 
 export function recipeAddCategory(): RecipeAddCategory {
-    return {
-        type: constants.RECIPE_ADD_CATEGORY,
-    };
+  return {
+    type: constants.RECIPE_ADD_CATEGORY,
+  };
 }
 
 export function recipeChangeCategoryName(event: React.FormEvent<HTMLInputElement>): RecipeChangeCategoryName {
-    return {
-        type: constants.RECIPE_CHANGE_CATEGORY_NAME,
-        newName: event.currentTarget.value
-    };
+  return {
+    type: constants.RECIPE_CHANGE_CATEGORY_NAME,
+    newName: event.currentTarget.value
+  };
 }
 
 export function recipeChangeCategoryDescription(event: React.FormEvent<HTMLInputElement>):
- RecipeChangeCategoryDescription {
-    return {
-        type: constants.RECIPE_CHANGE_CATEGORY_DESCRIPTION,
-        newDescription: event.currentTarget.value
-    };
+  RecipeChangeCategoryDescription {
+  return {
+    type: constants.RECIPE_CHANGE_CATEGORY_DESCRIPTION,
+    newDescription: event.currentTarget.value
+  };
+}
+
+export function recipeAddRecipe(): RecipeAddRecipe {
+  return {
+    type: constants.RECIPE_ADD_RECIPE,
+  };
+}
+
+export function recipeChangeRecipeName(event: React.FormEvent<HTMLInputElement>): RecipeChangeRecipeName {
+  return {
+    type: constants.RECIPE_CHANGE_RECIPE_NAME,
+    newName: event.currentTarget.value
+  };
+}
+
+export function RecipeChangeRecipeUrl(event: React.FormEvent<HTMLInputElement>): RecipeChangeRecipeUrl {
+  return {
+    type: constants.RECIPE_CHANGE_RECIPE_URL,
+    newUrl: event.currentTarget.value
+  };
 }

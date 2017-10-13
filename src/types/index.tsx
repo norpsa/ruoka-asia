@@ -13,7 +13,7 @@ export interface BarState {
 export interface Recipe {
   id: number;
   name: string;
-  description: string;
+  url: string;
   categoryId: number;
 }
 
@@ -31,9 +31,11 @@ export interface RecipeState {
   categories: Category[];
   recipes: Recipe[];
   nextCategoryId: number;
-  nextRecipeId: number;
   newCategoryName: string;
   newCategoryDescription: string;
+  nextRecipeId: number;
+  newRecipeName: string;
+  newRecipeUrl: string;
 }
 
 export interface RootState {
