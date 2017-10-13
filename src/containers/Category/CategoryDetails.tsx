@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { RootState, OwnProps } from '../../types/index';
 
 export function mapStateToProps(state: RootState, params: OwnProps) {
-  console.log("ads", params);
   return {
-    id: params.id
+    id: params.id,
+    category: state.recipes.categories.find((c) => c.id === Number(params.id))
   };
 }
 

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { Category } from '../../types/index';
+import { NavLink } from 'react-router-dom';
 
 export interface Props {
   categories: Category[];
@@ -11,7 +12,7 @@ function ListCategories({
 
   const listItems = categories.map((category) => (
     <li key={category.id}>
-      {category.name}
+      <NavLink to={'/category/' + category.id}>{category.name}</NavLink>
     </li>
   ));
 

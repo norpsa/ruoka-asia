@@ -29,7 +29,8 @@ export function recipeChangeCategoryName(event: React.FormEvent<HTMLInputElement
     };
 }
 
-export function recipeChangeCategoryDescription(event: React.FormEvent<HTMLInputElement>): RecipeChangeCategoryDescription{
+export function recipeChangeCategoryDescription(event: React.FormEvent<HTMLInputElement>):
+ RecipeChangeCategoryDescription {
     return {
         type: constants.RECIPE_CHANGE_CATEGORY_DESCRIPTION,
         newDescription: event.currentTarget.value

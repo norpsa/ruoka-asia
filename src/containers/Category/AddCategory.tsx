@@ -14,8 +14,10 @@ export function mapStateToProps(state: RootState) {
 export function mapDispatchToProps(dispatch: Dispatch<RootAction>) {
   return {
     addCategory: () => dispatch(recipeActions.recipeAddCategory()),
-    categoryNameChanged: (event: React.FormEvent<HTMLInputElement>) => dispatch(recipeActions.recipeChangeCategoryName(event)),
-    categoryDescriptionChanged: (event: React.FormEvent<HTMLInputElement>) => dispatch(recipeActions.recipeChangeCategoryDescription(event))
+    categoryNameChanged: (event: React.FormEvent<HTMLInputElement>) =>
+      dispatch(recipeActions.recipeChangeCategoryName(event)),
+    categoryDescriptionChanged: (event: React.FormEvent<HTMLInputElement>) =>
+      dispatch(recipeActions.recipeChangeCategoryDescription(event))
   };
 }
 

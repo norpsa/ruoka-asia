@@ -1,15 +1,30 @@
 import * as React from 'react';
+import { Category } from '../../types/index';
 
 export interface Props {
   id: any;
+  category?: Category;
 }
 
 function ListCategories({
-  id
+  id,
+  category
 }: Props) {
+  let categoryDetails;
+  if (category) {
+    categoryDetails = (
+      <div>
+      Nimi:
+      {category.name} <br /><br />
+      Kuvaus:
+      {category.description} <br /><br /></div>
+    );
+  } else {
+    categoryDetails = 'Kategoriaa ei ole olemassa';
+  }
   return (
     <div className="hello">
-      {id}
+      {categoryDetails}
     </div>
   );
 }

@@ -20,10 +20,18 @@ function AddCategory({
 
   return (
     <div className="add-category">
-      <Input type="text" value={categoryName} addonBefore="Nimi"
-        onChange={(event) => categoryNameChanged(event)} />
-      <Input type="text" value={categoryDescription} addonBefore="Kuvaus"
-        onChange={(event) => categoryDescriptionChanged(event)} />
+      <Input
+        type="text"
+        value={categoryName}
+        addonBefore="Nimi"
+        onChange={(event) => categoryNameChanged(event)}
+      />
+      <Input
+        type="text"
+        value={categoryDescription}
+        addonBefore="Kuvaus"
+        onChange={(event) => categoryDescriptionChanged(event)}
+      />
       <br /><br />
       <Button onClick={addCategory}>Lisää</Button>
     </div>
