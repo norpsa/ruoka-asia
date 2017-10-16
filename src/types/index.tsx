@@ -23,6 +23,10 @@ export interface Category {
   description: string;
 }
 
+export interface AddRecipePayload {
+  categoryId: number;
+}
+
 export interface OwnProps {
   id: number;
 }

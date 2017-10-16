@@ -45,8 +45,12 @@ export function recipes(state: RecipeState = initialState, action: Actions): Rec
       return {
         ...state,
         recipes: [...state.recipes,
-        { id: state.nextRecipeId, name: state.newRecipeName, url: state.newRecipeUrl, categoryId: 1 }
-        ],
+        {
+          id: state.nextRecipeId,
+          name: state.newRecipeName,
+          url: state.newRecipeUrl,
+          categoryId: action.payload.categoryId
+        }],
         nextRecipeId: state.nextRecipeId + 1,
         newRecipeName: '',
         newRecipeUrl: ''

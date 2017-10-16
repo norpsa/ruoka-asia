@@ -1,4 +1,5 @@
 import * as constants from '../constants';
+import { AddRecipePayload } from '../types/index';
 
 export interface RecipeAddCategory {
   type: constants.RECIPE_ADD_CATEGORY;
@@ -16,6 +17,7 @@ export interface RecipeChangeCategoryDescription {
 
 export interface RecipeAddRecipe {
   type: constants.RECIPE_ADD_RECIPE;
+  payload: AddRecipePayload;
 }
 
 export interface RecipeChangeRecipeName {
@@ -27,7 +29,6 @@ export interface RecipeChangeRecipeUrl {
   type: constants.RECIPE_CHANGE_RECIPE_URL;
   newUrl: string;
 }
-
 
 export type Actions = RecipeAddCategory
   | RecipeChangeCategoryName
@@ -57,9 +58,10 @@ export function recipeChangeCategoryDescription(event: React.FormEvent<HTMLInput
   };
 }
 
-export function recipeAddRecipe(): RecipeAddRecipe {
+export function recipeAddRecipe(categoryId: number): RecipeAddRecipe {
   return {
     type: constants.RECIPE_ADD_RECIPE,
+    payload: { categoryId: categoryId }
   };
 }
 
@@ -70,7 +72,7 @@ export function recipeChangeRecipeName(event: React.FormEvent<HTMLInputElement>)
   };
 }
 
-export function RecipeChangeRecipeUrl(event: React.FormEvent<HTMLInputElement>): RecipeChangeRecipeUrl {
+export function recipeChangeRecipeUrl(event: React.FormEvent<HTMLInputElement>): RecipeChangeRecipeUrl {
   return {
     type: constants.RECIPE_CHANGE_RECIPE_URL,
     newUrl: event.currentTarget.value

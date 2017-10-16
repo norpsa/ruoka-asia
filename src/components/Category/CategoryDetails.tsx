@@ -6,7 +6,7 @@ export interface Props {
   category?: Category;
 }
 
-function ListCategories({
+function CategoryDetails({
   id,
   category
 }: Props) {
@@ -29,4 +29,4 @@ function ListCategories({
   );
 }
 
-export default ListCategories;
+export default CategoryDetails;
