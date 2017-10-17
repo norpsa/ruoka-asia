@@ -40,6 +40,8 @@ export interface RecipeState {
   nextRecipeId: number;
   newRecipeName: string;
   newRecipeUrl: string;
+  error: string;
+  loading: boolean;
 }
 
 export interface RootState {
