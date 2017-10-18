@@ -2,6 +2,7 @@ import * as constants from '../constants';
 import { AddRecipePayload, RootState, Category } from '../types/index';
 import axios from 'axios';
 import { Dispatch } from 'redux';
+import React from 'react';
 
 export interface RecipeAddCategory {
   type: constants.RECIPE_ADD_CATEGORY;
@@ -76,7 +77,8 @@ export type Actions = RecipeAddCategory
   | FetchRecipesSuccess;
 
 export function recipeAddCategory(): any {
-  return function (dispatch: Dispatch<RootState>, state: RootState) {
+  return function (dispatch: Dispatch<RootState>, getState: (() => RootState)) {
+    let state = getState();
     return axios({
       method: 'post',
       url: `http://localhost:8080/api/v1/category`,
@@ -95,14 +97,14 @@ export function recipeAddCategorySuccess(data: any): RecipeAddCategorySuccess {
   return {
     type: constants.RECIPE_ADD_CATEGORY_SUCCESS,
     category: data
-  }
+  };
 }
 
 export function recipeAddCategoryFailure(error: any): RecipeAddCategoryFailure {
   return {
     type: constants.RECIPE_ADD_CATEGORY_FAILURE,
     error: error
-  }
+  };
 }
 
 export function recipeChangeCategoryName(event: React.FormEvent<HTMLInputElement>): RecipeChangeCategoryName {
