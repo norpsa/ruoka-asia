@@ -1,5 +1,5 @@
 import * as constants from '../constants';
-import { AddRecipePayload, RootState, Category } from '../types/index';
+import { AddRecipePayload, RootState, Category, Recipe } from '../types/index';
 import axios from 'axios';
 import { Dispatch } from 'redux';
 import React from 'react';
@@ -31,6 +31,16 @@ export interface RecipeChangeCategoryDescription {
 export interface RecipeAddRecipe {
   type: constants.RECIPE_ADD_RECIPE;
   payload: AddRecipePayload;
+}
+
+export interface RecipeAddRecipeSuccess {
+  type: constants.RECIPE_ADD_RECIPE_SUCCESS;
+  recipe: Recipe;
+}
+
+export interface RecipeAddRecipeFailure {
+  type: constants.RECIPE_ADD_RECIPE_FAILURE;
+  error: any;
 }
 
 export interface RecipeChangeRecipeName {
@@ -69,6 +79,8 @@ export type Actions = RecipeAddCategory
   | RecipeChangeCategoryName
   | RecipeChangeCategoryDescription
   | RecipeAddRecipe
+  | RecipeAddRecipeFailure
+  | RecipeAddRecipeSuccess
   | RecipeChangeRecipeName
   | RecipeChangeRecipeUrl
   | FetchCategoriesFailure
@@ -122,10 +134,35 @@ export function recipeChangeCategoryDescription(event: React.FormEvent<HTMLInput
   };
 }
 
-export function recipeAddRecipe(categoryId: number): RecipeAddRecipe {
+export function recipeAddRecipe(categoryId: number): any {
+  return function (dispatch: Dispatch<RootState>, getState: (() => RootState)) {
+    let state = getState();
+    return axios({
+      method: 'post',
+      url: `http://localhost:8080/api/v1/recipe`,
+      headers: [],
+      data: {
+        name: state.recipes.newRecipeName,
+        url: state.recipes.newRecipeUrl,
+        categoryId: categoryId
+      }
+    })
+    .then((response) => dispatch(recipeAddRecipeSuccess(response.data)))
+    .catch((error) => dispatch(recipeAddRecipeFailure(error)));
+  };
+}
+
+export function recipeAddRecipeSuccess(data: any): RecipeAddRecipeSuccess {
   return {
-    type: constants.RECIPE_ADD_RECIPE,
-    payload: { categoryId: categoryId }
+    type: constants.RECIPE_ADD_RECIPE_SUCCESS,
+    recipe: data
+  };
+}
+
+export function recipeAddRecipeFailure(error: any): RecipeAddRecipeFailure {
+  return {
+    type: constants.RECIPE_ADD_RECIPE_FAILURE,
+    error: error
   };
 }
 

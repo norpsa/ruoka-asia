@@ -11,7 +11,9 @@ import {
   FETCH_RECIPES_FAILURE,
   FETCH_RECIPES_SUCCESS,
   RECIPE_ADD_CATEGORY_FAILURE,
-  RECIPE_ADD_CATEGORY_SUCCESS
+  RECIPE_ADD_CATEGORY_SUCCESS,
+  RECIPE_ADD_RECIPE_FAILURE,
+  RECIPE_ADD_RECIPE_SUCCESS
 } from '../constants/index';
 
 const initialState: RecipeState = {
@@ -67,17 +69,25 @@ export function recipes(state: RecipeState = initialState, action: Actions): Rec
     case RECIPE_ADD_RECIPE:
       return {
         ...state,
+        loading: true,
+        error: '',
+      };
+    case RECIPE_ADD_RECIPE_SUCCESS:
+        return {
+        ...state,
         recipes: [...state.recipes,
-        {
-          id: state.nextRecipeId,
-          name: state.newRecipeName,
-          url: state.newRecipeUrl,
-          categoryId: action.payload.categoryId
-        }],
-        nextRecipeId: state.nextRecipeId + 1,
+        action.recipe
+        ],
         newRecipeName: '',
         newRecipeUrl: '',
+        loading: false,
         error: '',
+      };
+    case RECIPE_ADD_RECIPE_FAILURE:
+      return {
+        ...state,
+        error: action.error,
+        loading: false,
       };
     case RECIPE_CHANGE_RECIPE_NAME:
       return {
